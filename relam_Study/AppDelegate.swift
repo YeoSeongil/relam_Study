@@ -6,14 +6,29 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        debugPrint(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        let testModel = testModel()
+        testModel._name = "seongil"
+        testModel._age = 25
+        
+        do {
+            let realm = try Realm()
+            
+            try realm.write {
+                realm.add(testModel)
+            }
+        } catch {
+            print("Err \(error)")
+        }
+        
         return true
     }
 
