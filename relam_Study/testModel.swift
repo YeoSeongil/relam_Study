@@ -12,4 +12,11 @@ class testModel:Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var _name: String
     @Persisted var _age: Int
+    @Persisted var _status: Bool = true
+    
+    convenience init(name:String, age:Int) {
+        self.init()
+        self._name = name
+        self._age = age
+    }
 }
