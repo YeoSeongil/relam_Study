@@ -24,6 +24,9 @@ class RealmManager {
         }
     }
     
+    // --- MARK ---
+    /// Define: realm DB read Data
+    ///
     func readRealmData() -> Results<testModel>{
         return realmInstance.objects(testModel.self)
     }
@@ -42,46 +45,18 @@ class RealmManager {
         }
     }
     
-    func test_updateRealmData() {
-        do{
-            try realmInstance.write {
-            
-            }
-        } catch {
-            debugPrint("TestUpdate Err \(error)")
-            return
-        }
-    }
-    
     // --- MARK ---
     /// Define : realm DB Delete Data
     func deleteRealmData(model: testModel) {
-        //        do {
-        //            try realmInstance.delete {
-        //                completion
-        //            }
-        //        } catch {
-        //            debugPrint("realm Delete Err \(error)")
-        //        }
-        //        do {
-        //            try realmInstance.delete(model)
-        //        } catch {
-        //            debugPrint("Delete Err \(error)")
-        //            return
-        //        }
-        //    }
-        // TestCode
         do {
             try realmInstance.write {
-                realmInstance.add(model)
+                debugPrint("Start Delete \(model)")
+                realmInstance.delete(model)
+                debugPrint("Succeced Delete")
             }
-        }catch {
-            debugPrint("Test : realm DB Delete ERR. \(error)")
+        } catch {
+            debugPrint("Delete Err \(error)")
             return
         }
-    }
-    
-    @objc private func realmTestCode() {
-        
     }
 }
