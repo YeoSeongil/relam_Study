@@ -23,7 +23,17 @@ class ViewController: UIViewController {
         
         let realm_Data = realm_Manager.readRealmData()
         
-    debugPrint(realm_Data)
+        debugPrint(realm_Data[0])
+        
+//        realm_Manager.updateRealmData {
+//            realm_Data[0] = testModel(name: "Update", age: 10)
+//        }
+        
+        realm_Manager.updateRealmData {
+            realm_Data[0]._name = "Test_Update_Name"
+            realm_Data[0]._status = false
+            realm_Data[0]._age = 123
+        }
     }
 
     private func setView() {

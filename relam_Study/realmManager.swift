@@ -42,6 +42,17 @@ class RealmManager {
         }
     }
     
+    func test_updateRealmData() {
+        do{
+            try realmInstance.write {
+            
+            }
+        } catch {
+            debugPrint("TestUpdate Err \(error)")
+            return
+        }
+    }
+    
     // --- MARK ---
     /// Define : realm DB Delete Data
     func deleteRealmData(model: testModel) {
