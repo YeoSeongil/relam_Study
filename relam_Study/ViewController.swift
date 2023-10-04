@@ -15,8 +15,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         setView()
-        let test_model = testModel(name: "test_code_name", age: 25)
-        realm_Manager.createRealmData(model: test_model)
+        let test_model = testModel(name: "test_Model_01", age: 25)
+        
+        let test_model2 = testModel(name: "test_Model_02", age: 26)
+        
+        let test_model_arr = [test_model, test_model2]
+        
+        let realm_Data = realm_Manager.readRealmData()
+        
+    debugPrint(realm_Data)
     }
 
     private func setView() {

@@ -24,6 +24,10 @@ class RealmManager {
         }
     }
     
+    func readRealmData() -> Results<testModel>{
+        return realmInstance.objects(testModel.self)
+    }
+    
     // --- MARK ---
     /// Define : realm DB Update Data
     ///
