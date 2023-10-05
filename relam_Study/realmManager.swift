@@ -13,7 +13,6 @@ class RealmManager {
     
     // --- MARK ---
     /// Define : realm DB create Data
-    ///
     func createRealmData(model: testModel) {
         do {
             try realmInstance.write {
@@ -26,14 +25,12 @@ class RealmManager {
     
     // --- MARK ---
     /// Define: realm DB read Data
-    ///
     func readRealmData() -> Results<testModel>{
         return realmInstance.objects(testModel.self)
     }
-    
+
     // --- MARK ---
     /// Define : realm DB Update Data
-    ///
     func updateRealmData(completion: () -> Void) {
         do{
             try realmInstance.write {
@@ -59,4 +56,22 @@ class RealmManager {
             return
         }
     }
+    
+    func test_all_delete_method(model: [testModel]) {
+        do {
+            try realmInstance.write {
+                model.map {
+                    realmInstance.delete($0)
+                }
+            }
+        } catch {
+            debugPrint("err")
+            return
+        }
+    }
+    
+    func test_vapor_server_connect(completion: () -> ()) {
+        completion()
+    }
+    
 }

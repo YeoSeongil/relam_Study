@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         debugPrint(Realm.Configuration.defaultConfiguration.fileURL)
         
-        let schema = Realm.Configuration(schemaVersion: 1)
+        let schema = Realm.Configuration(schemaVersion: 2)
         Realm.Configuration.defaultConfiguration = schema
         
         return true

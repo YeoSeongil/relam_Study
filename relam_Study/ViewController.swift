@@ -10,29 +10,41 @@ import RealmSwift
 
 
 class ViewController: UIViewController {
-
+    
     let realm_Manager = RealmManager()
     
     override func viewDidLoad() {
         setView()
         
+        
+        
         // Create
-        let test_model = testModel(name: "test_Model_01", age: 25)
+        //let test_Model = testModel(name: "new_version_schema_test_model", age: 99, etc: "schema version 2")
+        //realm_Manager.createRealmData(model: test_Model)
         
         // Read
         let realm_Data = realm_Manager.readRealmData()
-    
-        // Update
-        realm_Manager.updateRealmData {
-            realm_Data[0]._name = "Test_Update_Name"
-            realm_Data[0]._status = false
-            realm_Data[0]._age = 123
-        }
         
-        // Delete 
-        realm_Manager.deleteRealmData(model: realm_Data[2])
+//        realm_Data.self.map {
+//            self.realm_Manager.deleteRealmData(model: $0)
+//        }
+        
+        realm_Manager.test_all_delete_method(model: realm_Data.map{$0})
+        
+        
+        
+        //debugPrint(test_realm_data_arr)
+        // Update
+        //        realm_Manager.updateRealmData {
+        //            realm_Data[0]._name = "Test_Update_Name"
+        //            realm_Data[0]._status = false
+        //            realm_Data[0]._age = 123
+        //        }
+        
+        // Delete
+        
     }
-
+    
     private func setView() {
         self.view.backgroundColor = .white
     }
