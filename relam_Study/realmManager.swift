@@ -13,7 +13,7 @@ class RealmManager {
     
     // --- MARK ---
     /// Define : realm DB create Data
-    func createRealmData(model: testModel) {
+    func createRealmData(model: MyCurrency) {
         do {
             try realmInstance.write {
                 realmInstance.add(model)
@@ -23,11 +23,22 @@ class RealmManager {
         }
     }
     
+    func create<T: Object> (_ object: T) {
+        do {
+            try realmInstance.write {
+                realmInstance.add(object)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     // --- MARK ---
     /// Define: realm DB read Data
-    func readRealmData() -> Results<testModel>{
-        return realmInstance.objects(testModel.self)
+    func readRealmData() -> Results<MyCurrency>{
+        return realmInstance.objects(MyCurrency.self)
     }
+    
 
     // --- MARK ---
     /// Define : realm DB Update Data
@@ -44,7 +55,7 @@ class RealmManager {
     
     // --- MARK ---
     /// Define : realm DB Delete Data
-    func deleteRealmData(model: testModel) {
+    func deleteRealmData(model: MyCurrency) {
         do {
             try realmInstance.write {
                 debugPrint("Start Delete \(model)")
@@ -57,7 +68,7 @@ class RealmManager {
         }
     }
     
-    func test_all_delete_method(model: [testModel]) {
+    func test_all_delete_method(model: [MyCurrency]) {
         do {
             try realmInstance.write {
                 model.map {
@@ -70,8 +81,5 @@ class RealmManager {
         }
     }
     
-    func test_vapor_server_connect(completion: () -> ()) {
-        completion()
-    }
     
 }
