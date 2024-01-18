@@ -11,10 +11,12 @@ import RealmSwift
 class MyCurrency: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var currencyCode: String
+    @Persisted var current: String
     
-    convenience init(currencyCode: String) {
+    convenience init(currencyCode: String, current: String) {
         self.init()
         self.currencyCode = currencyCode
+        self.current = current
     }
 }
  
