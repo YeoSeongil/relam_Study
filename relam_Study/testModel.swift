@@ -8,34 +8,20 @@
 import Foundation
 import RealmSwift
 
+// todo
 // --- MARK ---
 // Define: Test Realm Model Object
 class testModel:Object {
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var _name: String
-    @Persisted var _age: Int
+    @Persisted var _oauthToken: String
     @Persisted var _etc: String
     @Persisted var _status: Bool = true
     
-    convenience init(name:String, age:Int, etc:String) {
+    convenience init(name:String, oauthToken:String, etc:String) {
         self.init()
+        self._oauthToken = oauthToken
         self._name = name
-        self._age = age
         self._etc = etc
     }
 }
-
-
-// User
-// Group
-// Other
-
-// Read
-// Write
-// eXcute
-
-
-// RWX : 4 2 1 , 4 2 1 , 4 2 1
-
-
-// FIFO,
